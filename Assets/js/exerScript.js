@@ -20,15 +20,46 @@ function getAPI () {
                 console.log(bodyPart);
                 for (const part of bodyPart){
                     console.log(part);
-                    let ddlList = document.querySelector("#ddl");
-                    let option = document.createElement("option");
-                    option.textContent = part;
-                    ddlList.appendChild(option)
+                    let ddlList = document.querySelector("#dropdown1");
+                    let option = document.createElement("li");
+                    let aEl = document.createElement("a");
+                    aEl.setAttribute("href","#!");
+                    aEl.textContent = part[i];
+                    option.appendChild(aEl);
                 }
         });
 }
 
+
+// This function will fetch exercises based on the selected body part  when the page loads and populate a dropdown menu
+function fetchExercises(selectedBodyPart) {
+    const exerciseURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedBodyPart}?appid=${APIKey}`;
+    fetch(exerciseURL, {
+        method: 'GET',
+        headers: {
+            "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+            "X-RapidAPI-Key": APIKey
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); 
+    });
+}
+
+// Added event listener to the dropdown to handle user selection
+document.addEventListener('DOMContentLoaded', () => {
+    loadBodyParts();
+    const ddl = document.querySelector("#dropdown1");
+    ddl.addEventListener('change', (event) => {
+        fetchExercises(event.target.value);
+    });
+});
+
+
+
 {/* <select name="dropdown" id="ddl">Dropdown</select> */}
 
 
-getAPI();
+
+
