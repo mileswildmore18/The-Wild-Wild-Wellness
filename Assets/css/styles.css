@@ -6,19 +6,12 @@ nav.header {
 
 }
 
-button.exercise, .diet  {
+a.dropdown-trigger, .btn, .diet  {
     width:15%;
     margin-bottom: 20px;
     margin-top: 20px;
-    background-color: rgb(20, 148, 233);
     font-size: 25px;
 }
-
-button.exercise:hover , .diet:hover{
-    background-color: skyblue;
-}
-
-
 
 h1 {
     color: blue;

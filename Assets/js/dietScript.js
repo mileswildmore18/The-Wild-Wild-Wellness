@@ -1,4 +1,5 @@
 let apikey = '7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea';
+let foodDiets = [];
 const queryurl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients?limitLicense=false&minProtein=30&maxFat=10';
 
 
@@ -15,6 +16,10 @@ function getAPI () {
         })
         .then(function (data) {
             console.log(data);
+            for (const foodDiet of foodDiets){
+                console.log(foodDiet);
+                let foodList = document.querySelector()
+            }
         })
 }
 
