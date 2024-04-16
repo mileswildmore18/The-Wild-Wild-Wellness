@@ -18,9 +18,15 @@ function getAPI () {
             console.log(data);
             for (const foodDiet of foodDiets){
                 console.log(foodDiet);
-                let foodList = document.querySelector()
+                let foodList = document.querySelector('#dropdown2')
+                let foodOption = document.createElement("li");
+                let aEl2 = document.createElement("a");
+                aEl2.setAttribute("href",'#!');
+                aEl2.textContent = foodDiet;
+                foodOption.appendChild(aEl2);
+                foodList.appendChild(foodOption)
             }
-        })
+        });
 }
 
  
