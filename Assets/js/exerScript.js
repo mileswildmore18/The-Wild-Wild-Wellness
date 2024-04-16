@@ -29,6 +29,7 @@ function getAPI () {
         });
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, {
@@ -55,6 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchExercises(event.target.value);
     });
 });
+=======
+// function exerciseEvent(onclick) {
+//     let exerciseContent = document.getElementById("exercise");
+//     if (exerciseContent.style.display === 'block') {
+//         exerciseContent.style.display = 'none';
+//     } else {
+//         exerciseContent.style.display = 'block';
+//     }
+// }
+
 
 // This function will fetch exercises based on the selected body part  when the page loads and populate a dropdown menu
 function fetchExercises(selectedBodyPart) {
