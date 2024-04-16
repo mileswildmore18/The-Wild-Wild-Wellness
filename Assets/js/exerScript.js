@@ -14,9 +14,7 @@ function getAPI () {
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
-                console.log(data);
-                bodyPart = data;
+        .then(function (bodyPart) {
                 console.log(bodyPart);
                 for (const part of bodyPart){
                     console.log(part);
@@ -24,19 +22,50 @@ function getAPI () {
                     let option = document.createElement("li");
                     let aEl = document.createElement("a");
                     aEl.setAttribute("href","#!");
-                    aEl.textContent = part[i];
+                    aEl.textContent = part;
                     option.appendChild(aEl);
+                    ddlList.appendChild(option)
                 }
         });
 }
-function exerciseEvent(onclick) {
-    let exerciseContent = document.getElementById("exercise");
-    if (exerciseContent.style.display === 'block') {
-        exerciseContent.style.display = 'none';
-    } else {
-        exerciseContent.style.display = 'block';
-    }
-}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems, {
+        hover: true,
+        coverTrigger: false,
+        
+    });
+  });
+
+
+getAPI()
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const ddl = document.querySelector("#dropdown1");
+    ddl.addEventListener('change', (event) => {
+        fetchExercises(event.target.value);
+    });
+});
+=======
+// function exerciseEvent(onclick) {
+//     let exerciseContent = document.getElementById("exercise");
+//     if (exerciseContent.style.display === 'block') {
+//         exerciseContent.style.display = 'none';
+//     } else {
+//         exerciseContent.style.display = 'block';
+//     }
+// }
+
 
 // This function will fetch exercises based on the selected body part  when the page loads and populate a dropdown menu
 function fetchExercises(selectedBodyPart) {
@@ -55,13 +84,6 @@ function fetchExercises(selectedBodyPart) {
 }
 
 // Added event listener to the dropdown to handle user selection
-document.addEventListener('DOMContentLoaded', () => {
-    loadBodyParts();
-    const ddl = document.querySelector("#dropdown1");
-    ddl.addEventListener('change', (event) => {
-        fetchExercises(event.target.value);
-    });
-});
 
 
 
