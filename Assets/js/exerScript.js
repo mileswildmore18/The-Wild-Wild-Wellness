@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchExercises(event.target.value);
     });
 });
-=======
 // function exerciseEvent(onclick) {
 //     let exerciseContent = document.getElementById("exercise");
 //     if (exerciseContent.style.display === 'block') {
