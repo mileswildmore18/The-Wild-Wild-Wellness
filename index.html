@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="'stylesheet" href="./Assets/css/styles.css">
+    <link rel="stylesheet" href="./Assets/css/styles.css">
     <title>The Wild Nation</title>
 </head>
-    <nav class ="Header">
-        <h1>Wild Wild Wellness</h1>
-        <button id="exercise" onclick="exerciseEvent()">Exercise</button>
-        <button id="diet" onclick="dietEvent()">Diet</button>
-        <h2>No Need to go to the gym!<br>
-            Workout from home!
-        </h2>
-    </nav>
+    
 <body>
-    <image src="./Assets/fitness-trends.jpg">
-        <h3> Know your goals of how you want to stay fit?</h3>
-    <form>
+    <nav class ="header">
+        <button id="exercise" onclick="exerciseEvent()">Exercise</button>
+        <h1>Wild Wild Wellness</h1>
+        <button id="diet" onclick="dietEvent()">Diet</button>
+       
+    </nav>
+    
+    <h2>No Need to go to the gym!<br>
+            Workout from home!</h2>
+    <article class="info">
+         
+       <image src="./Assets/fitness-trends.jpg">    
+    </article>
+    <h3> Know your goals of how you want to stay fit?</h3>
+    <div class = "form">
         <h3>Sign up today!</h3>
         <input type="text" id ="name" value=""><br>
-        <input type="submit" value ="Stay Determined!">
+        <input type="submit" id="submit" value ="Stay Determined!">
+    
     </form>
-    <script src="./Assets/js/script.js"></script>
+    <script src="./Assets/js/exerScript.js"></script>
+    <script src="./Assets/js/dietScript.js"></script>
 </body>
 </html>

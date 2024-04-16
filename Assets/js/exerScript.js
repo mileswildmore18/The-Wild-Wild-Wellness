@@ -15,9 +15,7 @@ function getAPI () {
             return response.json();
         })
         .then(function (data) {
-                console.log(bodyPart);
-                for(const part of bodyPart){
-                }
+                console.log(data);
                 bodyPart = data;
                 console.log(bodyPart);
                 for (const part of bodyPart){
@@ -64,4 +62,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-getAPI();
+

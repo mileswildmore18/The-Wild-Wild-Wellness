@@ -14,6 +14,10 @@ button#exercise, #diet  {
     font-size: 25px;
 }
 
+button#exercise:hover , #diet:hover{
+    background-color: skyblue;
+}
+
 h1 {
     color: blue;
     font-family: Arial, Helvetica, sans-serif;
@@ -46,4 +50,19 @@ h3 {
     align-items: center;
     font-size: 20px;
     font-family:Arial, Helvetica, sans-serif;
+}
+
+input#name{
+    padding: 10px;
+    width:15%;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+input#submit{
+    background-color: yellow;
+    padding:20px;
+    font-size: 19px;
+}
+input#submit:hover{
+    background-color:orange;
 }
