@@ -15,9 +15,9 @@ function getAPI () {
             return response.json();
         })
         .then(function (bodyPart) {
-                console.log(bodyPart);
+                // console.log(bodyPart);
                 for (const part of bodyPart){
-                    console.log(part);
+                    // console.log(part);
                     let ddlList = document.querySelector("#dropdown1");
                     let option = document.createElement("li");
                     let aEl = document.createElement("a");
@@ -29,7 +29,7 @@ function getAPI () {
         });
 }
 
-
+// Added event listener to the dropdown to handle user selection
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, {
@@ -42,18 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 getAPI()
 
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
-    ddl.addEventListener('change', (event) => {
-        fetchExercises(event.target.value);
+    ddl.addEventListener('click', (event) => {
+        let selectedBodyPart = event.target.textContent;
+        console.log(selectedBodyPart);
+        fetchExercises(selectedBodyPart);
     });
 });
 // function exerciseEvent(onclick) {
@@ -82,7 +76,6 @@ function fetchExercises(selectedBodyPart) {
     });
 }
 
-// Added event listener to the dropdown to handle user selection
 
 
 
