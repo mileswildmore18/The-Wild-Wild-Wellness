@@ -6,7 +6,7 @@ nav.header {
 
 }
 
-button#exercise, #diet  {
+button.exercise, .diet  {
     width:15%;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -14,9 +14,11 @@ button#exercise, #diet  {
     font-size: 25px;
 }
 
-button#exercise:hover , #diet:hover{
+button.exercise:hover , .diet:hover{
     background-color: skyblue;
 }
+
+
 
 h1 {
     color: blue;
