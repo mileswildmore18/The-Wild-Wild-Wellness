@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-//   Returns the option clicked in the dropdown menu and calls the new fetch function -N
+// Returns the option clicked in the dropdown menu and calls the new fetch function -N
 document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
@@ -66,7 +66,7 @@ function fetchExercises(selectedBodyPart) {
     });
 }
 
-// Fills card with info from the API fetch and appends to the page
+// Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
     let card = document.querySelector(".card");
     let name = document.createElement("p");
@@ -86,26 +86,6 @@ function exerCard(exercise) {
     card.appendChild(equipment);
     card.appendChild(instructions);
     card.appendChild(gif);
-
-    // console.log(exercise);
-    // // console.log(exercise.name);
-    // // console.log(exercise.target);
-    // // console.log(exercise.equipment);
-    // // console.log(exercise.instructions); 
-    // console.log(exercise.gifUrl);
-    
-    // let gifFetchURL = exercise.gifUrl;
-    // fetch(gifFetchURL, {
-    //     method: 'GET',
-    //     headers: {
-    //         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-    //         "X-RapidAPI-Key": APIKey
-    //     }
-    // }) 
-    // .then(response => response.blob())
-    // .then((blob) => {
-    //     console.log(blob);
-    // });
 }
 
 getAPI();
