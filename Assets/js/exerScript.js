@@ -62,12 +62,36 @@ function fetchExercises(selectedBodyPart) {
     // Narrows down data returned to just the first entry listing equipment of "body weight" -N
     .then(data => {
         let exercise = data.find((equip) => equip.equipment === "body weight");
-        // console.log(exercise);
-        console.log(exercise.name);
-        console.log(exercise.target);
-        console.log(exercise.equipment);
-        console.log(exercise.instructions);
+        exerCard(exercise);
     });
+}
+
+// Fills card with info from the API fetch and appends to the page
+function exerCard(exercise) {
+    let card = document.querySelector(".card");
+    let name = document.createElement("p");
+    let target = document.createElement("p");
+    let equipment = document.createElement("p");
+    let instructions = document.createElement("p");
+    let gif = document.createElement("a");
+
+    name.textContent = exercise.name;
+    target.textContent = exercise.target;
+    equipment.textContent = exercise.equipment;
+    instructions.textContent = exercise.instructions;
+    gif.setAttribute("href", exercise.gifUrl);
+
+    card.appendChild(name);
+    card.appendChild(target);
+    card.appendChild(equipment);
+    card.appendChild(instructions);
+    card.appendChild(gif);
+
+    console.log(exercise);
+    // console.log(exercise.name);
+    // console.log(exercise.target);
+    // console.log(exercise.equipment);
+    // console.log(exercise.instructions);        
 }
 
 getAPI();
