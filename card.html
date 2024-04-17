@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./Assets/css/styles.css">
+    <title>The Wild Nation</title>
+</head>
+    
+<body>
+    <nav class ="header">
+        
+        <h1>Wild Wild Wellness</h1>
+        
+       
+    </nav>
+    <section class = 'middle'>
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Exercise</a>
+        <ul id='dropdown1' class='dropdown-content'>
+        </ul>
+        <ul id="dropdown2" class="dropdown2-content">    
+        </ul>
+        <h2>No Need to go to the gym!<br>
+            Workout from home!</h2>
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Diet</a>
+    </section>
+    <article class="info">
+         
+       <image src="./Assets/fitness-trends.jpg">    
+    </article>
+    <h3> Know your goals of how you want to stay fit?</h3>
+<!-- Line 34-47 is the Card itself. Data should populate when body part is selected -->
+    <div class = "container"> 
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-image">
+                  <!-- <span class="card-title exName">Bicep Curls</span> -->
+                </div>
+                <div class="card-content">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class = "form">
+        <h3>Sign up today!</h3>
+        <input type="text" id ="name" value=""><br>
+        <input type="submit" id="submit" value ="Stay Determined!">
+    
+    </form>
+    <script src="./Assets/js/exerScript.js"></script>
+    <script src="./Assets/js/dietScript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
