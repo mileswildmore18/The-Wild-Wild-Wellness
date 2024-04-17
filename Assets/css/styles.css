@@ -15,7 +15,7 @@ nav.header {
 
 }
 
-a.dropdown-trigger, .dropdown-trigger-two .btn {
+a.dropdown-trigger, .dropdown-trigger2, .btn {
     display:flex;
     justify-content: center;
     width:15%;

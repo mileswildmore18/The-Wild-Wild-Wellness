@@ -9,7 +9,7 @@ Pick out any of the exercises you want to work on based on what part of the body
 
 # What is the motivation?
 
-We provide you with the best advice you are looking for to have fun with the exercises as well as staying determined on your journey to your goals!
+We provide you with the best advice you are looking for to have fun with the exercises as well as staying determined on your journey to your goals! You can also get a chance to see some exercises in action to see how to do them after you have chosen an option you want to focus on! We also provide you visuals of food that you would love to eat while maintaining a healthy diet!
 
 # Why pick Wild-Wild-Wellness?
 

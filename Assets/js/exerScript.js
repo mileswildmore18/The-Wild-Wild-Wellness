@@ -1,7 +1,11 @@
 
-let APIKey = "26366cdce0mshac69a128060d37ep109ca6jsnc544b844f769";
+
+let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
+let APIKey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
+let APIKey3 = "26366cdce0mshac69a128060d37ep109ca6jsnc544b844f769";
+
 let bodyPart = [];
-const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey}`;
+const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey2}`;
 
 // fetches list of body parts from API -N
 function getAPI () {
@@ -9,7 +13,7 @@ function getAPI () {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-        "X-RapidAPI-Key": APIKey,
+        "X-RapidAPI-Key": APIKey2,
         }
     })    
         .then(function (response) {
@@ -38,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-//   Returns the option clicked in the dropdown menu and calls the new fetch function -N
+// Returns the option clicked in the dropdown menu and calls the new fetch function -N
 document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
@@ -55,7 +59,7 @@ function fetchExercises(selectedBodyPart) {
         method: 'GET',
         headers: {
             "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-            "X-RapidAPI-Key": APIKey
+            "X-RapidAPI-Key": APIKey2,
         }
     })
     .then(response => response.json())
@@ -66,7 +70,7 @@ function fetchExercises(selectedBodyPart) {
     });
 }
 
-// Fills card with info from the API fetch and appends to the page
+// Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
     let card = document.querySelector(".card");
     let name = document.createElement("div");
@@ -87,6 +91,7 @@ function exerCard(exercise) {
     card.appendChild(equipment);
     card.appendChild(instructions);
 
+
     // console.log(exercise);
     // // console.log(exercise.name);
     // // console.log(exercise.target);
@@ -106,9 +111,12 @@ function exerCard(exercise) {
     // .then((blob) => {
     //     console.log(blob);
     // });
+
+    card.appendChild(gif);
+
 }
 
-getAPI();
+// getAPI();
 
 
 
