@@ -73,13 +73,13 @@ function exerCard(exercise) {
     let target = document.createElement("p");
     let equipment = document.createElement("p");
     let instructions = document.createElement("p");
-    let gif = document.createElement("a");
+    let gif = document.createElement("img");
 
     name.textContent = exercise.name;
     target.textContent = exercise.target;
     equipment.textContent = exercise.equipment;
     instructions.textContent = exercise.instructions;
-    gif.setAttribute("href", exercise.gifUrl);
+    gif.src = exercise.gifUrl;
 
     card.appendChild(name);
     card.appendChild(target);
@@ -87,11 +87,25 @@ function exerCard(exercise) {
     card.appendChild(instructions);
     card.appendChild(gif);
 
-    console.log(exercise);
-    // console.log(exercise.name);
-    // console.log(exercise.target);
-    // console.log(exercise.equipment);
-    // console.log(exercise.instructions);        
+    // console.log(exercise);
+    // // console.log(exercise.name);
+    // // console.log(exercise.target);
+    // // console.log(exercise.equipment);
+    // // console.log(exercise.instructions); 
+    // console.log(exercise.gifUrl);
+    
+    // let gifFetchURL = exercise.gifUrl;
+    // fetch(gifFetchURL, {
+    //     method: 'GET',
+    //     headers: {
+    //         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+    //         "X-RapidAPI-Key": APIKey
+    //     }
+    // }) 
+    // .then(response => response.blob())
+    // .then((blob) => {
+    //     console.log(blob);
+    // });
 }
 
 getAPI();
