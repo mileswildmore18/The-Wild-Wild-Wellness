@@ -17,9 +17,7 @@ function getAPI () {
         })
         .then(function (bodyPart) {
             // for each body part, creates option in dropdown menu -N
-            console.log(bodyPart);
                 for (const part of bodyPart){
-                    console.log(part);
                     let ddlList = document.querySelector("#dropdown1");
                     let option = document.createElement("li");
                     let aEl = document.createElement("a");
