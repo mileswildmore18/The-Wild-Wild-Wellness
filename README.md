@@ -22,6 +22,7 @@ You can find more detail about the APIs we have used based on our website at the
 For the Exercises: 
 
 https://v2.exercisedb.io/docs/static/index.html
+
 https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
 
 For nurtritious foods based on a healthy diet:
