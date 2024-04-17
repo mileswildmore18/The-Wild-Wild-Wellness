@@ -1,4 +1,5 @@
 let apikey = '7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea';
+let apikey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
 const loseBFUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients?limitLicense=false&minProtein=30&maxFat=10';
 const loseWtUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients?limitLicense=false&minProtein=30&maxFat=10';
 const gainMusUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients?limitLicense=false&minProtein=30&maxFat=10';
@@ -32,32 +33,31 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     const dd2 = document.querySelector("#dropdown2");
     dd2.addEventListener('click', (event) => {
-     let selectedFood = event.target.textContent;
-        fetchFoods(selectedFood);
+     let selectedDiet = event.target.textContent;
+        fetchFoods(selectedDiet);
     });
 });
 
 //Calls for individual fetch request based on selection -N
-function fetchFoods(selectedFood) {
-    if (selectedFood === "Lose Body Fat") {
-        loseBF(selectedFood);
-    } else if (selectedFood === "Lose Weight") {
-        loseWt(selectedFood);
-    } else if (selectedFood === "Gain Muscle") {
-        gainMus(selectedFood);
+function fetchFoods(selectedDiet) {
+    if (selectedDiet === "Lose Body Fat") {
+        loseBF(selectedDiet);
+    } else if (selectedDiet === "Lose Weight") {
+        loseWt(selectedDiet);
+    } else if (selectedDiet === "Gain Muscle") {
+        gainMus(selectedDiet);
     } else {
-        mainMus(selectedFood);
+        mainMus(selectedDiet);
     }
 }
 
 // Makes fetch request for option "Lose Body Fat" -N
-function loseBF(selectedFood) {
-    console.log(selectedFood);
+function loseBF(selectedDiet) {
     fetch(loseBFUrl, {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": apikey,
+        "X-RapidAPI-Key": apikey2,
         }
     })
     .then(function (response) {
@@ -69,13 +69,13 @@ function loseBF(selectedFood) {
 }
 
 // Makes fetch request for option "Lose Weight" -N
-function loseWt(selectedFood) {
-    console.log(selectedFood);
+function loseWt(selectedDiet) {
+    console.log(selectedDiet);
     fetch(loseWtUrl, {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": apikey,
+        "X-RapidAPI-Key": apikey2,
         }
     })
     .then(function (response) {
@@ -87,13 +87,13 @@ function loseWt(selectedFood) {
 }
 
 // Makes fetch request for option "Gain Muscle" -N
-function gainMus(selectedFood) {
-    console.log(selectedFood);
+function gainMus(selectedDiet) {
+    console.log(selectedDiet);
     fetch(gainMusUrl, {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": apikey,
+        "X-RapidAPI-Key": apikey2,
         }
     })
     .then(function (response) {
@@ -105,13 +105,13 @@ function gainMus(selectedFood) {
 }
 
 // Makes fetch request for option "Maintain Muscle" -N
-function mainMus(selectedFood) {
-    console.log(selectedFood);
+function mainMus(selectedDiet) {
+    console.log(selectedDiet);
     fetch(mainMusUrl, {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": apikey,
+        "X-RapidAPI-Key": apikey2,
         }
     })
     .then(function (response) {
@@ -125,30 +125,47 @@ function mainMus(selectedFood) {
 // Takes name of recipe and makes new fetch for actual recipe
 // Our original fetch returned the name, img, and nutrient values, but not the actual recipe -N
 function getRecipe(data) {
-    console.log(data);
     let foodRec = data[Math.floor(Math.random()*data.length)];
-    console.log(foodRec);
-    let recipeName = foodRec.title;
-    console.log(recipeName);
+    let recipeID = foodRec.id;
+    const getRecipeUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeID}/information`;
+
+    fetch(getRecipeUrl, {
+        method: 'GET',
+        headers: {
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": apikey2,
+        }        
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        let instructions = data.instructions; 
+        foodCard(foodRec, instructions)     
+    })
 }
 
 //Fills the card with info from the API fetch and appends to the page -M
-function foodCard() {
+function foodCard(foodRec, instructions) {
     let dietCard = document.querySelector(".foodCard");
     let foodName = document.createElement("p");
-    let foodTarget = document.createElement("p");
-    let foodInfo = document.createElement("p");
-    let foodPhoto = document.createElement("a");
+    let foodCal = document.createElement("p");
+    let foodFat = document.createElement("p");
+    let foodProt = document.createElement("p");
+    let foodInst = document.createElement("p")
+    let foodPhoto = document.createElement("img");
 
-    foodName.textContent = chosenFood.foodName;
-    foodTarget.textConent = chosenFood.foodTarget;
-    foodInfo.textContent = chosenFood.foodInfo;
-    foodPhoto.setAttribute = ("href", chosenFood.foodPhotoUrl);
+    foodName.textContent = foodRec.title;
+    foodCal.textContent = `Calories: ${foodRec.calories}`; 
+    foodFat.textContent = `Fat: ${foodRec.fat}`; 
+    foodProt.textContent = `Protein: ${foodRec.protein}`;
+    foodInst.textContent = instructions;
+    foodPhoto.src = foodRec.image;
 
     dietCard.appendChild(foodName);
-    dietCard.appendChild(foodTarget);
-    dietCard.appendChild(foodInfo);
+    dietCard.appendChild(foodCal);
+    dietCard.appendChild(foodFat);
+    dietCard.appendChild(foodProt);
+    dietCard.appendChild(foodInst);
     dietCard.appendChild(foodPhoto);
-
-    console.log(chosenFood);
 }
