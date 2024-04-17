@@ -1,13 +1,9 @@
 
 let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
 let bodyPart = [];
-const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?limit=5&appid=${APIKey}`;
+const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey}`;
 
 // fetches list of body parts from API -N
-
-
-// Fetching the data on the exercise for specific body parts based on the API Key
-
 function getAPI () {
     fetch(queryURL, {
         method: 'GET',
@@ -54,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Fetches exercises based on the selected body part -N
 function fetchExercises(selectedBodyPart) {
-    const exerciseURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedBodyPart}?appid=${APIKey}`;
+    const exerciseURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedBodyPart}?limit=200&appid=${APIKey}`;
     fetch(exerciseURL, {
         method: 'GET',
         headers: {
@@ -63,8 +59,14 @@ function fetchExercises(selectedBodyPart) {
         }
     })
     .then(response => response.json())
+    // Narrows down data returned to just the first entry listing equipment of "body weight" -N
     .then(data => {
-        console.log(data); 
+        let exercise = data.find((equip) => equip.equipment === "body weight");
+        // console.log(exercise);
+        console.log(exercise.name);
+        console.log(exercise.target);
+        console.log(exercise.equipment);
+        console.log(exercise.instructions);
     });
 }
 
