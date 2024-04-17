@@ -14,8 +14,8 @@ function getAPI () {
         .then(function (response) {
         return response.json();
         })
-        .then(function (data) {
-            console.log(data);
+        .then(function (foodDiets) {
+            
             for (const foodDiet of foodDiets){
                 console.log(foodDiet);
                 let foodList = document.querySelector('#dropdown2')
@@ -31,7 +31,17 @@ function getAPI () {
 
  
 
-getAPI();
+
+
+//Adds event listener to the dropdown of the foods to select for the necessary diet for the user's choice
+document.addEventListener('Food', () => {
+    loadFoodDiet();
+    const dd2 = document.querySelector("dropdown2");
+    dd2.addEventListener('diet', (event) => {
+        fetchFoods(event.target.value);
+    });
+});
+
 //This will fetch the selected foods for diet based on user's goals.
 function fetchFoods(selectedFood) {
     const foodURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients${selectedFood}?limitLicense=false&minProtein=30&maxFat=10&appid=${apikey}`
@@ -43,15 +53,33 @@ function fetchFoods(selectedFood) {
         }
     })
     .then(response => response.json())
+    //Narrowing down data returned to the first entry that lists food for diet
     .then(data => {
-        console.log(data);
-    })
-}
-//Adds event listener to the dropdown of the foods to select for the necessary diet for the user's choice
-document.addEventListener('Food', () => {
-    loadFoodDiet();
-    const dd2 = document.querySelector("dropdown2");
-    dd2.addEventListener('diet', (event) => {
-        fetchFoods(event.target.value);
+        let chosenFood = data.find((add) >= add.foodChoice === "food diets")
+        foodCard(chosenFood);
     });
-});
+}
+
+
+//Fills the card with info from the API fetch and appends to the page
+function foodCard(chosenFood) {
+    let dietCard = document.querySelector(".foodCard");
+    let foodName = document.createElement("p");
+    let foodTarget = document.createElement("p");
+    let foodInfo = document.createElement("p");
+    let foodPhoto = document.createElement("a");
+
+    foodName.textContent = chosenFood.foodName;
+    foodTarget.textConent = chosenFood.foodTarget;
+    foodInfo.textContent = chosenFood.foodInfo;
+    foodPhoto.setAttribute = ("href", chosenFood.foodPhotoUrl);
+
+    dietCard.appendChild(foodName);
+    dietCard.appendChild(foodTarget);
+    dietCard.appendChild(foodInfo);
+    dietCard.appendChild(foodPhoto);
+
+    console.log(chosenFood);
+}
+
+getAPI();
