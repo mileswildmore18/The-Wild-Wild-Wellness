@@ -1,7 +1,8 @@
 
 let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
+let APIKey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
 let bodyPart = [];
-const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey}`;
+const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey2}`;
 
 // fetches list of body parts from API -N
 function getAPI () {
@@ -9,7 +10,7 @@ function getAPI () {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-        "X-RapidAPI-Key": APIKey,
+        "X-RapidAPI-Key": APIKey2,
         }
     })    
         .then(function (response) {
@@ -55,7 +56,7 @@ function fetchExercises(selectedBodyPart) {
         method: 'GET',
         headers: {
             "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-            "X-RapidAPI-Key": APIKey
+            "X-RapidAPI-Key": APIKey2,
         }
     })
     .then(response => response.json())
@@ -88,7 +89,7 @@ function exerCard(exercise) {
     card.appendChild(gif);
 }
 
-getAPI();
+// getAPI();
 
 
 
