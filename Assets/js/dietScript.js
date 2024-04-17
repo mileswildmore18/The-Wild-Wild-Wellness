@@ -7,9 +7,7 @@ const mainMusUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/
 
 function makeDDL () {
     const options = ["Lose Body Fat", "Lose Weight", "Gain Muscle", "Maintain Muscle"];
-    console.log(options);
     for (const option of options) {
-        console.log(option);
         let foodList = document.querySelector('#dropdown2')
         let foodOption = document.createElement("li");
         let aEl2 = document.createElement("a");
@@ -29,43 +27,95 @@ document.addEventListener('DOMContentLoaded', function() {
     makeDDL();
   }); 
 
-
-
-//Adds event listener to the dropdown of the foods to select for the necessary diet for the user's choice
-// document.addEventListener('DOMContentLoaded', () => {
-//     const dd2 = document.querySelector("#dropdown2");
-//     dd2.addEventListener('click', (event) => {
-     // let selectedFood = event.target.textContent;
-//         fetchFoods(selectedFood);
-//     });
-// });
+// Adds event listener to the dropdown of the foods to select for the necessary diet for the user's choice
+document.addEventListener('DOMContentLoaded', () => {
+    const dd2 = document.querySelector("#dropdown2");
+    dd2.addEventListener('click', (event) => {
+     let selectedFood = event.target.textContent;
+        fetchFoods(selectedFood);
+    });
+});
 
 //This will fetch the selected foods for diet based on user's goals.
-// function fetchFoods(selectedFood) {
-    // if (selectedFood === "Lose Body Fat") {
-    //     loseBF();
-    // } else if (selectedFood === "Lose Weight") {
-    //     loseWt();
-    // } else if (selectedFood === "Gain Muscle") {
-    //     gainMus();
-    // } else {
-    //     mainMus();
-    // }
-//     const foodURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByNutrients${selectedFood}?limitLicense=false&minProtein=30&maxFat=10&appid=${apikey}`
-//     fetch(foodURL, {
-//         method: 'GET',
-//         headers: {
-//             "X-RapidAPI Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-//             "X-RapidAPI-Key": apikey
-//         }
-//     })
-//     .then(response => response.json())
-//     //Narrowing down data returned to the first entry that lists food for diet
-//     .then(data => {
-//         let chosenFood = data.find((add) >= add.foodChoice === "food diets")
-//         foodCard(chosenFood);
-//     });
-// }
+function fetchFoods(selectedFood) {
+    if (selectedFood === "Lose Body Fat") {
+        loseBF(selectedFood);
+    } else if (selectedFood === "Lose Weight") {
+        loseWt(selectedFood);
+    } else if (selectedFood === "Gain Muscle") {
+        gainMus(selectedFood);
+    } else {
+        mainMus(selectedFood);
+    }
+}
+
+function loseBF(selectedFood) {
+    console.log(selectedFood);
+    fetch(loseBFUrl, {
+        method: 'GET',
+        headers: {
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": apikey,
+        }
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    }) 
+}
+
+function loseWt(selectedFood) {
+    console.log(selectedFood);
+    fetch(loseWtUrl, {
+        method: 'GET',
+        headers: {
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": apikey,
+        }
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
+}
+
+function gainMus(selectedFood) {
+    console.log(selectedFood);
+    fetch(gainMusUrl, {
+        method: 'GET',
+        headers: {
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": apikey,
+        }
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
+}
+
+function mainMus(selectedFood) {
+    console.log(selectedFood);
+    fetch(mainMusUrl, {
+        method: 'GET',
+        headers: {
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": apikey,
+        }
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
+}
 
 
 //Fills the card with info from the API fetch and appends to the page
@@ -94,16 +144,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // getAPI();
 
 // function getAPI () {
-//     fetch(queryurl, {
-//         method: 'GET',
-//         headers: {
-//         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-//         "X-RapidAPI-Key": apikey,
-//         }
-//     })
-//         .then(function (response) {
-//         return response.json();
-//         })
+    // fetch(queryurl, {
+    //     method: 'GET',
+    //     headers: {
+    //     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+    //     "X-RapidAPI-Key": apikey,
+    //     }
+    // })
+        // .then(function (response) {
+        // return response.json();
+        // })
 //         .then(function (foodDiets) {
             
 //             for (const foodDiet of foodDiets){
