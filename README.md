@@ -15,6 +15,19 @@ We provide you with the best advice you are looking for to have fun with the exe
 
 We are passionate at improving people's lives in the healthiest way possible. We love building a community to bring people together and motivate each other to push on and continue inspiring others to stay healthy.
 
+# Links to APIs
+
+You can find more detail about the APIs we have used based on our website at these websites:
+
+For the Exercises: 
+
+https://v2.exercisedb.io/docs/static/index.html
+https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
+
+For nurtritious foods based on a healthy diet:
+
+https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
+
 # Special Thanks
 We would like to give special thanks to the entire team who helped with building this project for everyone to see on the website:
 
