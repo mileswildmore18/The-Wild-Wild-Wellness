@@ -1,6 +1,9 @@
 
+
 let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
 let APIKey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
+let APIKey3 = "26366cdce0mshac69a128060d37ep109ca6jsnc544b844f769";
+
 let bodyPart = [];
 const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey2}`;
 
@@ -70,10 +73,10 @@ function fetchExercises(selectedBodyPart) {
 // Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
     let card = document.querySelector(".card");
-    let name = document.createElement("p");
-    let target = document.createElement("p");
-    let equipment = document.createElement("p");
-    let instructions = document.createElement("p");
+    let name = document.createElement("div");
+    let target = document.createElement("div");
+    let equipment = document.createElement("div");
+    let instructions = document.createElement("div");
     let gif = document.createElement("img");
 
     name.textContent = exercise.name;
@@ -82,11 +85,35 @@ function exerCard(exercise) {
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
+    card.appendChild(gif);
     card.appendChild(name);
     card.appendChild(target);
     card.appendChild(equipment);
     card.appendChild(instructions);
+
+
+    // console.log(exercise);
+    // // console.log(exercise.name);
+    // // console.log(exercise.target);
+    // // console.log(exercise.equipment);
+    // // console.log(exercise.instructions); 
+    // console.log(exercise.gifUrl);
+    
+    // let gifFetchURL = exercise.gifUrl;
+    // fetch(gifFetchURL, {
+    //     method: 'GET',
+    //     headers: {
+    //         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+    //         "X-RapidAPI-Key": APIKey
+    //     }
+    // }) 
+    // .then(response => response.blob())
+    // .then((blob) => {
+    //     console.log(blob);
+    // });
+
     card.appendChild(gif);
+
 }
 
 // getAPI();

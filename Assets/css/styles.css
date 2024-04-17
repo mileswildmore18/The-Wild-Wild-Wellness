@@ -81,3 +81,15 @@ input#submit{
 input#submit:hover{
     background-color:orange;
 }
+/* Adds styling to the card -Em */
+.card .card-image .card-title {
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    max-width: 50%;
+    line-height: 10%;
+    padding-right: 20px;
+    padding-left: 10px;
+    background-color: rgb(17, 109, 159);
+    font-weight: 500;
+}
