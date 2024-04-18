@@ -95,6 +95,9 @@ function exerCard(exercise) {
     exCard.appendChild(name);
     exCard.appendChild(target);
     exCard.appendChild(instructions);
+
+    instructions.scrollIntoView({behavior: "smooth"});
+
 }
 
 // Removes all the child elements in the card, 
