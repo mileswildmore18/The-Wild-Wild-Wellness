@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./Assets/css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="./Assets/css/styles.css" />
     <title>The Wild Nation</title>
-</head>
-    
-<body>
-    <nav class ="header">
-        
-        <h1>Wild Wild Wellness</h1>
-        
-       
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper header" id="nav-cont">
+        <a href="./index.html" class="brand-logo center">Wild Wild Wellness</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger" id="right-align"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="right-a" href="./aboutus.html">About Us</a></li>
+          <li><a class="right-a" href="./contactus.html">Contact Us</a></li>
+        </ul>
+      </div>
     </nav>
-    <section class = 'middle'>
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Exercise</a>
-        <ul id='dropdown1' class='dropdown-content'>
-        </ul>
-        
-        <h2>No Need to go to the gym!<br>
-            Workout from home!</h2>
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Diet</a>
-        <ul id="dropdown2" class="dropdown-content">    
-        </ul>
+    
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="./aboutus.html">About Us</a></li>
+      <li><a href="./contactus.html">Contact Us</a></li>
+    </ul>
+
+    <section class="middle">
+      <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
+        >Exercise</a
+      >
+      <ul id="dropdown1" class="dropdown-content"></ul>
+      <ul id="dropdown2" class="dropdown2-content"></ul>
+      <h2>
+        No Need to go to the gym!<br />
+        Workout from home!
+      </h2>
+      <a class="dropdown-trigger btn" href="#" data-target="dropdown2">Diet</a>
     </section>
     <article class="info">
-         
-       <image class="main-img" src="./Assets/fitness-trends.jpg">    
+      <img src="./Assets/fitness-trends.jpg" alt="Fitness Trends" />
     </article>
     <h3> Know your goals of how you want to stay fit?</h3>
   <!-- Adds exercise card with API data -->

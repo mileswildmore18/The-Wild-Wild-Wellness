@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+   <link rel="stylesheet" href="./Assets/css/styles.css" />
+   <link rel="stylesheet" href="./Assets/css/contactus.css">
+    <title>Contact Form</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper header" id="nav-cont">
+          <a href="./index.html" class="brand-logo center">Wild Wild Wellness</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger" id="right-align"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="right-a" href="./aboutus.html">About Us</a></li>
+            <li><a class="right-a" href="./contactus.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="./aboutus.html">About Us</a></li>
+        <li><a href="./contactus.html">Contact Us</a></li>
+      </ul>
+    <div class="container">
+    <div id="contact-form" class="contact-form hidden">
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="First Last">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="email@email.com" required>
+            <label for="message">What's on your mind:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" class="btn" onclick="openPopup(event)">Submit</button>
+            <div class="popup" id="popup">
+                <img src="./Assets/tick.png">
+                <h2>Thank You </h2>
+                <p>Your message has been successfully sent!</p>
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>    
+        </form>
+    </div>	
+</div>
+
+    <script>
+        let popup = document.getElementById("popup");
+
+      
+        function openPopup(event){
+            event.preventDefault();
+            popup.classList.add("open-popup");
+        }
+        function closePopup(){
+            popup.classList.remove("open-popup");
+        }
+
+    </script>
+
+
+</body>
+</html>
+
+
