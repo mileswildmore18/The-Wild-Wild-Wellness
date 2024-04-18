@@ -1,7 +1,9 @@
-
 let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
+let APIKey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
+let APIKey3 = "26366cdce0mshac69a128060d37ep109ca6jsnc544b844f769";
+
 let bodyPart = [];
-const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey}`;
+const queryURL = `https://exercisedb.p.rapidapi.com/exercises/bodyPartList?appid=${APIKey2}`;
 
 // fetches list of body parts from API -N
 function getAPI () {
@@ -9,7 +11,7 @@ function getAPI () {
         method: 'GET',
         headers: {
         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-        "X-RapidAPI-Key": APIKey,
+        "X-RapidAPI-Key": APIKey2,
         }
     })    
         .then(function (response) {
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-//   Returns the option clicked in the dropdown menu and calls the new fetch function -N
+// Returns the option clicked in the dropdown menu and calls the new fetch function -N
 document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
@@ -55,43 +57,55 @@ function fetchExercises(selectedBodyPart) {
         method: 'GET',
         headers: {
             "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-            "X-RapidAPI-Key": APIKey
+            "X-RapidAPI-Key": APIKey2,
         }
     })
     .then(response => response.json())
-    // Narrows down data returned to just the first entry listing equipment of "body weight" -N
+    // Keeps randomly choosing exercises until it finds one listing equipment of "body weight" -N
     .then(data => {
-        let exercise = data.find((equip) => equip.equipment === "body weight");
+        let exercise = data[Math.floor(Math.random()*data.length)];
+        while (exercise.equipment !== "body weight"){
+            exercise = data[Math.floor(Math.random()*data.length)];
+        }
+        console.log(exercise);
+
         exerCard(exercise);
     });
 }
 
-// Fills card with info from the API fetch and appends to the page
+// Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
-    let card = document.querySelector(".card");
-    let name = document.createElement("p");
-    let target = document.createElement("p");
-    let equipment = document.createElement("p");
-    let instructions = document.createElement("p");
-    let gif = document.createElement("a");
+    let exCard = document.querySelector("#ex-card");
+    empty(exCard);
+    let gif = document.createElement("img");
+    gif.classList.add("card-image", "ex-img");
+    let name = document.createElement("div");
+    name.classList.add("card-title");
+    let target = document.createElement("div");
+    target.classList.add("card-content","target-part");
+    let instructions = document.createElement("div");
+    instructions.classList.add("card-content","ex-instructions");
 
     name.textContent = exercise.name;
     target.textContent = exercise.target;
-    equipment.textContent = exercise.equipment;
     instructions.textContent = exercise.instructions;
-    gif.setAttribute("href", exercise.gifUrl);
+    gif.src = exercise.gifUrl;
 
-    card.appendChild(name);
-    card.appendChild(target);
-    card.appendChild(equipment);
-    card.appendChild(instructions);
-    card.appendChild(gif);
+    exCard.appendChild(gif);
+    exCard.appendChild(name);
+    exCard.appendChild(target);
+    exCard.appendChild(instructions);
 
-    console.log(exercise);
-    // console.log(exercise.name);
-    // console.log(exercise.target);
-    // console.log(exercise.equipment);
-    // console.log(exercise.instructions);        
+    instructions.scrollIntoView({behavior: "smooth"});
+
+}
+
+// Removes all the child elements in the card, 
+// run right before putting in the new content -N
+function empty(element) {
+    while(element.firstElementChild) {
+        element.firstElementChild.remove();
+    }
 }
 
 getAPI();
