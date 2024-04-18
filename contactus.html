@@ -45,20 +45,25 @@
           <p>Your message has been successfully sent!</p>
           <button type="button" onclick="closePopup()">OK</button>
         </div>
+        <div class="popup" id="error">
+          <p>Please fill out each field</p>
+          <button type="button" onclick="closePopup()">OK</button>          
+        </div>
       </form>
     </div>
   </div>
 
   <script>
     let popup = document.getElementById("popup");
+    let error = document.getElementById("error");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let message = document.getElementById("message");
 
     function openPopup(event) {
       event.preventDefault();
-      if ((name === 'First Last') || (email === '') || (message === '')) {
-        console.log("Please fill out form");
+      if ((name.value === '') || (email.value === '') || (message.value === '')) {
+        error.classList.add("open-popup");
       } else {
         popup.classList.add("open-popup");
         name.value = '';
@@ -69,6 +74,7 @@
     }
     function closePopup() {
       popup.classList.remove("open-popup");
+      error.classList.remove("open-popup");
     }
 
 
