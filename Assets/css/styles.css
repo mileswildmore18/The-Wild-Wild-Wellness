@@ -8,6 +8,10 @@ html {
     display: flex;
 }
 
+#glow:hover{
+    color:rgb(212, 178, 24);
+}
+
 #right-nav{
     display: flex;
     align-self: flex-end;
