@@ -75,7 +75,7 @@ function fetchExercises(selectedBodyPart) {
 
 // Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
-    let exCard = document.querySelector(".card");
+    let exCard = document.querySelector("#ex-card");
     empty(exCard);
     let gif = document.createElement("img");
     gif.classList.add("card-image", "ex-img");
