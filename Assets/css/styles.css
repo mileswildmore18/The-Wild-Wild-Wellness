@@ -1,7 +1,15 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .header {
     height: 100px;  
     background-color: rgb(125, 208, 241);  
     display: flex;
+}
+
+#glow:hover{
+    color:rgb(212, 178, 24);
 }
 
 #right-nav{
