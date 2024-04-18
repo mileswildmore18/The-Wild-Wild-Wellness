@@ -147,14 +147,22 @@ function getRecipe(data) {
 
 //Fills the card with info from the API fetch and appends to the page -N
 function foodCard(foodRec, instructions) {
-    let dietCard = document.querySelector(".foodCard");
+    let dietCard = document.querySelector("#food-card");
     empty(dietCard);
-    let foodName = document.createElement("div");
-    let foodCal = document.createElement("div");
-    let foodFat = document.createElement("div");
-    let foodProt = document.createElement("div");
-    let foodInst = document.createElement("div")
     let foodPhoto = document.createElement("img");
+    foodPhoto.classList.add("card-image", "ex-img")
+    let foodName = document.createElement("div");
+    foodName.classList.add("card-title")
+    let macros = document.createElement("div")
+    macros.classList.add("card-content", "macros");
+    let foodCal = document.createElement("div");
+    foodCal.classList.add("card-content","calories");
+    let foodFat = document.createElement("div");
+    foodFat.classList.add("card-content","fat");
+    let foodProt = document.createElement("div");
+    foodProt.classList.add("card-content","protein");
+    let foodInst = document.createElement("div");
+    foodInst.classList.add("card-content","ex-instructions");
 
     foodName.textContent = foodRec.title;
     foodCal.textContent = `Calories: ${foodRec.calories}`; 
@@ -163,12 +171,13 @@ function foodCard(foodRec, instructions) {
     foodInst.textContent = instructions;
     foodPhoto.src = foodRec.image;
 
-    dietCard.appendChild(foodName);
-    dietCard.appendChild(foodCal);
-    dietCard.appendChild(foodFat);
-    dietCard.appendChild(foodProt);
-    dietCard.appendChild(foodInst);
     dietCard.appendChild(foodPhoto);
+    dietCard.appendChild(foodName);
+    dietCard.appendChild(macros)
+    macros.appendChild(foodCal);
+    macros.appendChild(foodFat);
+    macros.appendChild(foodProt);
+    dietCard.appendChild(foodInst);
 }
 
 // Removes all the child elements in the card, 

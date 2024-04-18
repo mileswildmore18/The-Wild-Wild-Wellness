@@ -83,10 +83,12 @@ input#submit:hover{
 }
 /* Adds styling to the card -Em */
 .card .card-title {
+    display: flex;
+    justify-content: center;
     color: rgb(255, 255, 255);
     position: relative;
     bottom: 10px;
-    max-width: 50%;
+    max-width: 80%;
     line-height: 160%;
     padding-right: 20px;
     padding-left: 10px;
@@ -112,4 +114,18 @@ input#submit:hover{
 
 .ex-img {
     width: 100%;
+}
+
+.macros {
+    display: flex;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: x-large;
+    background-color: rgb(17, 109, 159);
+    text-align: center;
+}
+
+.calories .fat .protein {
+    height: 50%;
 }
