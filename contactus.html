@@ -51,11 +51,16 @@
 
   <script>
     let popup = document.getElementById("popup");
-
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let message = document.getElementById("message");
 
     function openPopup(event) {
       event.preventDefault();
       popup.classList.add("open-popup");
+      name.value = '';
+      email.value = '';
+      message.value = '';
     }
     function closePopup() {
       popup.classList.remove("open-popup");
