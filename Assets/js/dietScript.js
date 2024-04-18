@@ -145,14 +145,15 @@ function getRecipe(data) {
     })
 }
 
-//Fills the card with info from the API fetch and appends to the page -M
+//Fills the card with info from the API fetch and appends to the page -N
 function foodCard(foodRec, instructions) {
     let dietCard = document.querySelector(".foodCard");
-    let foodName = document.createElement("p");
-    let foodCal = document.createElement("p");
-    let foodFat = document.createElement("p");
-    let foodProt = document.createElement("p");
-    let foodInst = document.createElement("p")
+    empty(dietCard);
+    let foodName = document.createElement("div");
+    let foodCal = document.createElement("div");
+    let foodFat = document.createElement("div");
+    let foodProt = document.createElement("div");
+    let foodInst = document.createElement("div")
     let foodPhoto = document.createElement("img");
 
     foodName.textContent = foodRec.title;
@@ -168,4 +169,12 @@ function foodCard(foodRec, instructions) {
     dietCard.appendChild(foodProt);
     dietCard.appendChild(foodInst);
     dietCard.appendChild(foodPhoto);
+}
+
+// Removes all the child elements in the card, 
+// run right before putting in the new content -N
+function empty(element) {
+    while(element.firstElementChild) {
+        element.firstElementChild.remove();
+    }
 }
