@@ -17,6 +17,12 @@ We provide you with the best advice you are looking for to have fun with the exe
 
 We are passionate at improving people's lives in the healthiest way possible. We love building a community to bring people together and motivate each other to push on and continue inspiring others to stay healthy.
 
+# Technology used for this website
+
+The main technology that was used to make this project come to life was the APIs used from the RapidAPI website to gather information . Check it out for more details:
+
+https://rapidapi.com/hub
+
 # Links to APIs
 
 You can find more detail about the APIs we have used based on our website at these websites:
