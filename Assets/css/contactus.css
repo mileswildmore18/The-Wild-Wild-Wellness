@@ -38,11 +38,15 @@
 }
 
 #contact-form button {    /*OK button*/
-    background-color: #0056b3; /* Example: blue background for buttons */
+    background-color: #0056B3; /* Example: blue background for buttons */
     color: white;
     border: none;
     cursor: pointer;
+
     height: 50px;
+
+
+
 }
 
 
