@@ -72,7 +72,8 @@ function fetchExercises(selectedBodyPart) {
 
 // Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
-    let card = document.querySelector(".card");
+    let excard = document.querySelector(".card");
+    empty(excard);
     let name = document.createElement("div");
     let target = document.createElement("div");
     let equipment = document.createElement("div");
@@ -85,38 +86,22 @@ function exerCard(exercise) {
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
-    card.appendChild(gif);
-    card.appendChild(name);
-    card.appendChild(target);
-    card.appendChild(equipment);
-    card.appendChild(instructions);
-
-
-    // console.log(exercise);
-    // // console.log(exercise.name);
-    // // console.log(exercise.target);
-    // // console.log(exercise.equipment);
-    // // console.log(exercise.instructions); 
-    // console.log(exercise.gifUrl);
-    
-    // let gifFetchURL = exercise.gifUrl;
-    // fetch(gifFetchURL, {
-    //     method: 'GET',
-    //     headers: {
-    //         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-    //         "X-RapidAPI-Key": APIKey
-    //     }
-    // }) 
-    // .then(response => response.blob())
-    // .then((blob) => {
-    //     console.log(blob);
-    // });
-
-    card.appendChild(gif);
-
+    excard.appendChild(gif);
+    excard.appendChild(name);
+    excard.appendChild(target);
+    excard.appendChild(equipment);
+    excard.appendChild(instructions);
 }
 
-// getAPI();
+// Removes all the child elements in the card, 
+// run right before putting in the new content -N
+function empty(element) {
+    while(element.firstElementChild) {
+        element.firstElementChild.remove();
+    }
+}
+
+getAPI();
 
 
 
