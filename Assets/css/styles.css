@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .header {
     height: 100px;  
     background-color: rgb(125, 208, 241);  
