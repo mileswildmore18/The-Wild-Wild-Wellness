@@ -1,23 +1,21 @@
 *{
     font-family: "Open Sans", sans-serif;
-    box-sizing: border-box;
+   
 }
 
 
 body{
-    display: flex;
     flex-direction: column; 
     align-items: center;
     justify-content: center; 
     min-height: 100vh;
-    background-color: #f1f1f1;
 }
 
 img{
-    display: block; 
     max-width: 100%; 
     height: auto; 
     margin-bottom: 20px;
+    padding-top: 10px;
 }
 
 
@@ -46,6 +44,13 @@ img{
     font-weight: bold;
     font-size: 24px; 
     margin: 0 auto;
+    font-weight: bold;
+    margin-left: 20px;
+    font-weight: normal; 
+}
+h1{
+    display: flex;
+    flex-direction:  column;
 }
 
 .navbar a {
@@ -59,11 +64,6 @@ img{
     text-decoration: underline;
 }
 
-.navbar h1 {
-    margin-left: 20px;
-    font-weight: normal; 
-}
-
 .navbar-links {
     list-style: none; 
     display: flex;
@@ -75,9 +75,6 @@ img{
     text-decoration: none; 
     font-weight: bold;
 }
-.navbar h1{
-font-weight: bold;
-}
 
 .navbar-links a:hover, .navbar-links a:focus {
     color: #f0f0f0; 
@@ -87,19 +84,17 @@ font-weight: bold;
 
 .inner-container{
     width: auto;
-    float: center;
     background-color: #fdfdfd;
- 
 }
 
-.inner-container h1{
-    margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 900;
+
+.about-section h1{
+    text-align: center;
+    font-weight: bold;
 }
 
 .text{
-    font-size: 13px;
+    font-size: 20px;
     color: #545454;
     line-height: 30px;
     text-align: justify;
@@ -110,23 +105,38 @@ font-weight: bold;
 p{
     font-family: cursive;
     font-size: 20px;
+    padding-left: 10px;
 }
 
 
 footer {
    margin-top: 40px;
    width: 100%;
+   background-color: rgb(241, 237, 232);
+  
 }
+strong {
+    font-weight: bold; /* Ensures that <strong> is always bold */
+}
+
 footer ul li {
     font-size: 1em; 
     color: black; 
     transition: color 0.3s ease, font-size 0.3s ease; 
     font-family: cursive;
     font-size: 18px;
+    padding-left: 10px;
+    text-align: center;
+    height: 30px;
+
 }
 footer ul li:hover {
     color: blue; 
-    font-size: 1.2em; 
+    font-size: 1.4em; 
+}
+.devs{
+    text-align: center;
+    padding-top: 10px;
 }
 
 @media screen and (max-width:600px){
