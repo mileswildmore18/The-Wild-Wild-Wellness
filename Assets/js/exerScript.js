@@ -45,7 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
         let selectedBodyPart = event.target.textContent;
-        console.log(selectedBodyPart);
+        // sends selectedBodyPart to local storage -N
+        let pastPart = localStorage.getItem('bodyPartArray');
+        let bodyPartArray = JSON.parse(pastPart) || [];
+        bodyPartArray.push(selectedBodyPart);
+        localStorage.setItem('bodyPartArray', JSON.stringify(bodyPartArray));
         fetchExercises(selectedBodyPart);
     });
 });

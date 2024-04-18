@@ -57,10 +57,15 @@
 
     function openPopup(event) {
       event.preventDefault();
-      popup.classList.add("open-popup");
-      name.value = '';
-      email.value = '';
-      message.value = '';
+      if ((name === 'First Last') || (email === '') || (message === '')) {
+        console.log("Please fill out form");
+      } else {
+        popup.classList.add("open-popup");
+        name.value = '';
+        email.value = '';
+        message.value = '';
+      }
+      
     }
     function closePopup() {
       popup.classList.remove("open-popup");
