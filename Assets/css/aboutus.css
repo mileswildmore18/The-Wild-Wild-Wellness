@@ -109,6 +109,7 @@ font-weight: bold;
 
 p{
     font-family: cursive;
+    font-size: 20px;
 }
 
 
@@ -121,6 +122,7 @@ footer ul li {
     color: black; 
     transition: color 0.3s ease, font-size 0.3s ease; 
     font-family: cursive;
+    font-size: 18px;
 }
 footer ul li:hover {
     color: blue; 

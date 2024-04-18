@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 .container{
     width: 100%;
@@ -31,8 +32,9 @@
     padding: 10px; /* Padding inside each element */
 }
 
-#contact-form input, #contact-form textarea {
+#contact-form input {
     border: 1px solid #ccc; /* Adds a border to input and textarea */
+    height: 1rem;
 }
 
 #contact-form button {    /*OK button*/
@@ -40,7 +42,15 @@
     color: white;
     border: none;
     cursor: pointer;
+    height: 50px;
 }
+
+
+textarea{
+    height: 9rem ;
+}
+
+
 
 .popup{
     width: 400px;
@@ -63,13 +73,14 @@
     transform: translate(-50%, -50%) scale(1); 
 }
 .popup img{
-    width: 100px;
+    width: 50px;
+    height: 50px;
     margin-top: -50px;
     border-radius: -50px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .popup h2{
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 500;
     margin: 30px;
 }
@@ -86,13 +97,7 @@
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.open-popup{
 
-}
-
-.popup p{
-    color: white;
-}
 
 
 
