@@ -24,8 +24,8 @@ a.dropdown-trigger, .dropdown-trigger2, .btn {
     font-size: 25px;
     
 }
-
-img {
+/* Adds class to home page image */
+.main-img {
     width: 100%;
 }
 
@@ -82,14 +82,34 @@ input#submit:hover{
     background-color:orange;
 }
 /* Adds styling to the card -Em */
-.card .card-image .card-title {
-    color: #fff;
-    position: absolute;
+.card .card-title {
+    color: rgb(255, 255, 255);
+    position: relative;
     bottom: 10px;
     max-width: 50%;
-    line-height: 10%;
+    line-height: 160%;
     padding-right: 20px;
     padding-left: 10px;
     background-color: rgb(17, 109, 159);
     font-weight: 500;
+    text-transform: capitalize;
+}
+ /* Adds styling to the text part of the card -Em */
+.target-part {
+    color: white;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: x-large;
+    background-color: rgb(17, 109, 159);
+    text-align: center;
+}
+
+.ex-instructions {
+    color: white;
+    font-variant: normal;
+    background-color: rgb(17, 109, 159);
+}
+
+.ex-img {
+    width: 100%;
 }

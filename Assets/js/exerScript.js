@@ -75,22 +75,26 @@ function fetchExercises(selectedBodyPart) {
 
 // Fills card with info from the API fetch and appends to the page -N
 function exerCard(exercise) {
-    let excard = document.querySelector(".card");
-    empty(excard);
-    let name = document.createElement("div");
-    let target = document.createElement("div");
-    let instructions = document.createElement("div");
+    let exCard = document.querySelector(".card");
+    empty(exCard);
     let gif = document.createElement("img");
+    gif.classList.add("card-image", "ex-img");
+    let name = document.createElement("div");
+    name.classList.add("card-title");
+    let target = document.createElement("div");
+    target.classList.add("card-content","target-part");
+    let instructions = document.createElement("div");
+    instructions.classList.add("card-content","ex-instructions");
 
     name.textContent = exercise.name;
     target.textContent = exercise.target;
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
-    excard.appendChild(gif);
-    excard.appendChild(name);
-    excard.appendChild(target);
-    excard.appendChild(instructions);
+    exCard.appendChild(gif);
+    exCard.appendChild(name);
+    exCard.appendChild(target);
+    exCard.appendChild(instructions);
 }
 
 // Removes all the child elements in the card, 
