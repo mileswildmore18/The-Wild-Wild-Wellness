@@ -36,10 +36,11 @@
 }
 
 #contact-form button {    /*OK button*/
-    background-color: #0056b3; /* Example: blue background for buttons */
+    background-color: #0056B3; /* Example: blue background for buttons */
     color: white;
     border: none;
     cursor: pointer;
+    height: 60px;
 }
 
 .popup{
@@ -86,13 +87,7 @@
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.open-popup{
 
-}
-
-.popup p{
-    color: white;
-}
 
 
 
