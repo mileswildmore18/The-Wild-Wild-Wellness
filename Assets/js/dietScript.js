@@ -178,6 +178,8 @@ function foodCard(foodRec, instructions) {
     macros.appendChild(foodFat);
     macros.appendChild(foodProt);
     dietCard.appendChild(foodInst);
+
+    foodInst.scrollIntoView({behavior: "smooth"});
 }
 
 // Removes all the child elements in the card, 
