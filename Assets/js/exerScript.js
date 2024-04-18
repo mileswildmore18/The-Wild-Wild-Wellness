@@ -1,5 +1,3 @@
-
-
 let APIKey = "7d3bff7bd1mshf07209b4c87620fp1a8bf8jsne5b3b63b54ea";
 let APIKey2 = "e561b50d73msh4314686b2659048p15c1b7jsn62d6f7f29522";
 let APIKey3 = "26366cdce0mshac69a128060d37ep109ca6jsnc544b844f769";
@@ -63,9 +61,14 @@ function fetchExercises(selectedBodyPart) {
         }
     })
     .then(response => response.json())
-    // Narrows down data returned to just the first entry listing equipment of "body weight" -N
+    // Keeps randomly choosing exercises until it finds one listing equipment of "body weight" -N
     .then(data => {
-        let exercise = data.find((equip) => equip.equipment === "body weight");
+        let exercise = data[Math.floor(Math.random()*data.length)];
+        while (exercise.equipment !== "body weight"){
+            exercise = data[Math.floor(Math.random()*data.length)];
+        }
+        console.log(exercise);
+
         exerCard(exercise);
     });
 }
@@ -76,20 +79,17 @@ function exerCard(exercise) {
     empty(excard);
     let name = document.createElement("div");
     let target = document.createElement("div");
-    let equipment = document.createElement("div");
     let instructions = document.createElement("div");
     let gif = document.createElement("img");
 
     name.textContent = exercise.name;
     target.textContent = exercise.target;
-    equipment.textContent = exercise.equipment;
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
     excard.appendChild(gif);
     excard.appendChild(name);
     excard.appendChild(target);
-    excard.appendChild(equipment);
     excard.appendChild(instructions);
 }
 
@@ -101,7 +101,7 @@ function empty(element) {
     }
 }
 
-// getAPI();
+getAPI();
 
 
 
