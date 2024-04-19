@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     const dd2 = document.querySelector("#dropdown2");
     dd2.addEventListener('click', (event) => {
-     let selectedDiet = event.target.textContent;
+        let selectedDiet = event.target.textContent;
+        // sends selectedDiet to local storage -N
+        let pastDiet = localStorage.getItem('dietArray');
+        let dietArray = JSON.parse(pastDiet) || [];
+        dietArray.push(selectedDiet);
+        localStorage.setItem('dietArray', JSON.stringify(dietArray));
         fetchFoods(selectedDiet);
     });
 });

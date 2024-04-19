@@ -43,47 +43,36 @@
           <p>Your message has been successfully sent!</p>
           <button type="button" onclick="closePopup()">OK</button>
         </div>
+        <div class="popup" id="error">
+          <p>Please fill out each field</p>
+          <button type="button" onclick="closePopup()">OK</button>          
+        </div>
       </form>
     </div>
   </div>
   <script>
     let popup = document.getElementById("popup");
+    let error = document.getElementById("error");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let message = document.getElementById("message");
-    let btn = document.getElementById("submit");
 
-
-function openPopup(event) {
-  event.preventDefault(); // Prevent the default form submission or link behavior
-
-  // Call validateForum and check if it returns true
-  if (validateForum()) {
-    // If validation passes, then open the popup
-    popup.classList.add("open-popup");
-    // Resetting form fields
-    name.value = '';
-    email.value = '';
-    message.value = '';
-  }
-}
-
-function validateForum() {
-  if (email.value === '') {
-    alert('Email is a required field');
-    return false;
-  } else if (message.value === '') {
-    alert('Message is a required field');
-    return false;
-  }
-  return true; // Return true if both fields are filled
-}
-
-function closePopup() {
-  popup.classList.remove("open-popup");
-}
-
-
+    function openPopup(event) {
+      event.preventDefault();
+      if ((name.value === '') || (email.value === '') || (message.value === '')) {
+        error.classList.add("open-popup");
+      } else {
+        popup.classList.add("open-popup");
+        name.value = '';
+        email.value = '';
+        message.value = '';
+      }
+      
+    }
+    function closePopup() {
+      popup.classList.remove("open-popup");
+      error.classList.remove("open-popup");
+    }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./Assets/js/sideNav.js"></script>
