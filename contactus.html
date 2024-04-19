@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" href="./Assets/css/styles.css" />
@@ -31,13 +29,13 @@
   </ul>
   <div class="container">
     <div id="contact-form" class="contact-form hidden">
-      <form action="#" method="post">
+      <form action="#" method="post" id="contact-form" class="contact-form">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="First Last">
+        <input type="text" id="name" name="name" placeholder="First Last" class="inputBox">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="email@email.com" required>
+        <input type="email" id="email" name="email" class="inputBox" placeholder="email@email.com" required >
         <label for="message">What's on your mind:</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea id="message" name="message" class="inputBox" required></textarea>
         <button type="submit" class="btn" onclick="openPopup(event)">Submit</button>
         <div class="popup" id="popup">
           <img src="./Assets/tick.png">
@@ -48,23 +46,42 @@
       </form>
     </div>
   </div>
-
   <script>
     let popup = document.getElementById("popup");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let message = document.getElementById("message");
+    let btn = document.getElementById("submit");
 
-    function openPopup(event) {
-      event.preventDefault();
-      popup.classList.add("open-popup");
-      name.value = '';
-      email.value = '';
-      message.value = '';
-    }
-    function closePopup() {
-      popup.classList.remove("open-popup");
-    }
+
+function openPopup(event) {
+  event.preventDefault(); // Prevent the default form submission or link behavior
+
+  // Call validateForum and check if it returns true
+  if (validateForum()) {
+    // If validation passes, then open the popup
+    popup.classList.add("open-popup");
+    // Resetting form fields
+    name.value = '';
+    email.value = '';
+    message.value = '';
+  }
+}
+
+function validateForum() {
+  if (email.value === '') {
+    alert('Email is a required field');
+    return false;
+  } else if (message.value === '') {
+    alert('Message is a required field');
+    return false;
+  }
+  return true; // Return true if both fields are filled
+}
+
+function closePopup() {
+  popup.classList.remove("open-popup");
+}
 
 
   </script>
@@ -72,5 +89,4 @@
   <script src="./Assets/js/sideNav.js"></script>
 
 </body>
-
 </html>
