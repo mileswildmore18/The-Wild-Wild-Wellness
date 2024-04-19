@@ -45,11 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
         let selectedBodyPart = event.target.textContent;
-        // sends selectedBodyPart to local storage -N
-        let pastPart = localStorage.getItem('bodyPartArray');
-        let bodyPartArray = JSON.parse(pastPart) || [];
-        bodyPartArray.push(selectedBodyPart);
-        localStorage.setItem('bodyPartArray', JSON.stringify(bodyPartArray));
         fetchExercises(selectedBodyPart);
     });
 });
@@ -71,7 +66,6 @@ function fetchExercises(selectedBodyPart) {
         while (exercise.equipment !== "body weight"){
             exercise = data[Math.floor(Math.random()*data.length)];
         }
-        console.log(exercise);
 
         exerCard(exercise);
     });
@@ -108,6 +102,7 @@ function exerCard(exercise) {
 
     favEx.addEventListener('click', () => {
         favEx.classList.add("fave");
+        storeFave(exercise);
     })
 
 }
@@ -118,6 +113,17 @@ function empty(element) {
     while(element.firstElementChild) {
         element.firstElementChild.remove();
     }
+}
+
+function storeFave (exercise) {
+    // sends favorite exercise to local storage -N
+    let pastEx = localStorage.getItem('exerciseArray');
+    console.log(pastEx);
+    let exerciseArray = JSON.parse(pastEx) || [];
+    console.log(exerciseArray);
+    exerciseArray.push(exercise);
+    console.log(exerciseArray);
+    localStorage.setItem('exerciseArray', JSON.stringify(exerciseArray));
 }
 
 getAPI();
