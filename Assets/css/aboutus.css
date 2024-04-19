@@ -112,7 +112,7 @@ p{
 footer {
    margin-top: 40px;
    width: 100%;
-   background-color: rgb(241, 237, 232);
+   background-color: rgb(249, 247, 244);
   
 }
 strong {
@@ -132,7 +132,7 @@ footer ul li {
 }
 footer ul li:hover {
     color: blue; 
-    font-size: 1.4em; 
+    font-size: 1.5em; 
 }
 .devs{
     text-align: center;
