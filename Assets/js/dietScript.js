@@ -34,11 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dd2 = document.querySelector("#dropdown2");
     dd2.addEventListener('click', (event) => {
         let selectedDiet = event.target.textContent;
-        // sends selectedDiet to local storage -N
-        let pastDiet = localStorage.getItem('dietArray');
-        let dietArray = JSON.parse(pastDiet) || [];
-        dietArray.push(selectedDiet);
-        localStorage.setItem('dietArray', JSON.stringify(dietArray));
         fetchFoods(selectedDiet);
     });
 });
@@ -193,8 +188,11 @@ function foodCard(foodRec, instructions) {
 
     foodInst.scrollIntoView({behavior: "smooth"});
 
+    // Makes the favorite button turn yellow when clicked, 
+    // and calls the function to store that exercise -N
     favDiet.addEventListener('click', () => {
         favDiet.classList.add("fave");
+        storeFave(foodRec, instructions);
     })
 }
 
@@ -204,4 +202,15 @@ function empty(element) {
     while(element.firstElementChild) {
         element.firstElementChild.remove();
     }
+}
+
+// Sends favorite recipe to local storage -N
+function storeFave (foodRec, instructions) {
+    let pastRec = localStorage.getItem('recipeArray');
+    console.log(pastRec);
+    let recipeArray = JSON.parse(pastRec) || [];
+    console.log(recipeArray);
+    recipeArray.push(foodRec, instructions);
+    console.log(recipeArray);
+    localStorage.setItem('recipeArray', JSON.stringify(recipeArray));
 }
