@@ -37,12 +37,14 @@
         <label for="message">What's on your mind:</label>
         <textarea id="message" name="message" class="inputBox" required></textarea>
         <button type="submit" class="btn" onclick="openPopup(event)">Submit</button>
+        <!-- Message pops up when submit button is clicked if all fields are filled -N -->
         <div class="popup" id="popup">
           <img src="./Assets/tick.png">
           <h2>Thank You </h2>
           <p>Your message has been successfully sent!</p>
           <button type="button" onclick="closePopup()">OK</button>
         </div>
+        <!-- Message pops up when submit button is clicked if any field is blank -->
         <div class="popup" id="error">
           <p>Please fill out each field</p>
           <button type="button" onclick="closePopup()">OK</button>          
@@ -57,6 +59,8 @@
     let email = document.getElementById("email");
     let message = document.getElementById("message");
 
+    // Checks the input fields for input. If empty, pops up the error message. 
+    // If filled, pops up thank you message and clears input fields -N
     function openPopup(event) {
       event.preventDefault();
       if ((name.value === '') || (email.value === '') || (message.value === '')) {
@@ -68,6 +72,7 @@
         message.value = '';
       }
       
+      // Closes either popup when ok button is clicked -N
     }
     function closePopup() {
       popup.classList.remove("open-popup");

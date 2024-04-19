@@ -68,14 +68,13 @@ function loseBF(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     }) 
 }
 
 // Makes fetch request for option "Lose Weight" -N
 function loseWt(selectedDiet) {
-    console.log(selectedDiet);
     fetch(loseWtUrl, {
         method: 'GET',
         headers: {
@@ -86,14 +85,13 @@ function loseWt(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Makes fetch request for option "Gain Muscle" -N
 function gainMus(selectedDiet) {
-    console.log(selectedDiet);
     fetch(gainMusUrl, {
         method: 'GET',
         headers: {
@@ -104,14 +102,13 @@ function gainMus(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Makes fetch request for option "Maintain Muscle" -N
 function mainMus(selectedDiet) {
-    console.log(selectedDiet);
     fetch(mainMusUrl, {
         method: 'GET',
         headers: {
@@ -122,15 +119,15 @@ function mainMus(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Takes name of recipe and makes new fetch for actual recipe
 // Our original fetch returned the name, img, and nutrient values, but not the actual recipe -N
-function getRecipe(data) {
-    let foodRec = data[Math.floor(Math.random()*data.length)];
+function getRecipe(diet) {
+    let foodRec = diet[Math.floor(Math.random()*diet.length)];
     let recipeID = foodRec.id;
     const getRecipeUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeID}/information`;
 
@@ -146,7 +143,13 @@ function getRecipe(data) {
     })
     .then(function (data) {
         let instructions = data.instructions; 
-        foodCard(foodRec, instructions)     
+        // If foodRec returns a recipe that doesn't have instructions in the API, 
+        // runs the fetch again until it finds a recipe with instructions -N
+        if (instructions === null) {
+            getRecipe(diet);
+        } else {
+            foodCard(foodRec, instructions)     
+        }
     })
 }
 
