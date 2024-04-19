@@ -83,6 +83,14 @@ a.dropdown-trigger, .dropdown-trigger2, .btn {
     max-height: 800px;
 }
 
+.material-icons:hover {
+    cursor: pointer;
+}
+
+.fave {
+    color: yellow;
+}
+
 h1 {
     display: flex;
     align-items: center;

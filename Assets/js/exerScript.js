@@ -45,11 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ddl = document.querySelector("#dropdown1");
     ddl.addEventListener('click', (event) => {
         let selectedBodyPart = event.target.textContent;
-        // sends selectedBodyPart to local storage -N
-        let pastPart = localStorage.getItem('bodyPartArray');
-        let bodyPartArray = JSON.parse(pastPart) || [];
-        bodyPartArray.push(selectedBodyPart);
-        localStorage.setItem('bodyPartArray', JSON.stringify(bodyPartArray));
         fetchExercises(selectedBodyPart);
     });
 });
@@ -71,7 +66,6 @@ function fetchExercises(selectedBodyPart) {
         while (exercise.equipment !== "body weight"){
             exercise = data[Math.floor(Math.random()*data.length)];
         }
-        console.log(exercise);
 
         exerCard(exercise);
     });
@@ -89,18 +83,29 @@ function exerCard(exercise) {
     target.classList.add("card-content","target-part");
     let instructions = document.createElement("div");
     instructions.classList.add("card-content","ex-instructions");
+    let favEx = document.createElement("i");
+    favEx.classList.add("small", "material-icons");
 
+    favEx.textContent = "star";
     name.textContent = exercise.name;
     target.textContent = exercise.target;
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
     exCard.appendChild(gif);
+    name.appendChild(favEx);
     exCard.appendChild(name);
     exCard.appendChild(target);
     exCard.appendChild(instructions);
 
     instructions.scrollIntoView({behavior: "smooth"});
+
+    // Makes the favorite button turn yellow when clicked, 
+    // and calls the function to store that exercise -N
+    favEx.addEventListener('click', () => {
+        favEx.classList.add("fave");
+        storeFave(exercise);
+    })
 
 }
 
@@ -110,6 +115,14 @@ function empty(element) {
     while(element.firstElementChild) {
         element.firstElementChild.remove();
     }
+}
+
+// Sends favorite exercise to local storage -N
+function storeFave (exercise) {
+    let pastEx = localStorage.getItem('exerciseArray');
+    let exerciseArray = JSON.parse(pastEx) || [];
+    exerciseArray.push(exercise);
+    localStorage.setItem('exerciseArray', JSON.stringify(exerciseArray));
 }
 
 getAPI();

@@ -34,11 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dd2 = document.querySelector("#dropdown2");
     dd2.addEventListener('click', (event) => {
         let selectedDiet = event.target.textContent;
-        // sends selectedDiet to local storage -N
-        let pastDiet = localStorage.getItem('dietArray');
-        let dietArray = JSON.parse(pastDiet) || [];
-        dietArray.push(selectedDiet);
-        localStorage.setItem('dietArray', JSON.stringify(dietArray));
         fetchFoods(selectedDiet);
     });
 });
@@ -171,7 +166,10 @@ function foodCard(foodRec, instructions) {
     foodProt.classList.add("card-content","protein");
     let foodInst = document.createElement("div");
     foodInst.classList.add("card-content","ex-instructions");
+    let favDiet = document.createElement("i");
+    favDiet.classList.add("small", "material-icons");
 
+    favDiet.textContent = "star";
     foodName.textContent = foodRec.title;
     foodCal.textContent = `Calories: ${foodRec.calories}`; 
     foodFat.textContent = `Fat: ${foodRec.fat}`; 
@@ -180,6 +178,7 @@ function foodCard(foodRec, instructions) {
     foodPhoto.src = foodRec.image;
 
     dietCard.appendChild(foodPhoto);
+    foodName.appendChild(favDiet);
     dietCard.appendChild(foodName);
     dietCard.appendChild(macros)
     macros.appendChild(foodCal);
@@ -188,6 +187,13 @@ function foodCard(foodRec, instructions) {
     dietCard.appendChild(foodInst);
 
     foodInst.scrollIntoView({behavior: "smooth"});
+
+    // Makes the favorite button turn yellow when clicked, 
+    // and calls the function to store that exercise -N
+    favDiet.addEventListener('click', () => {
+        favDiet.classList.add("fave");
+        storeFave(foodRec, instructions);
+    })
 }
 
 // Removes all the child elements in the card, 
@@ -196,4 +202,15 @@ function empty(element) {
     while(element.firstElementChild) {
         element.firstElementChild.remove();
     }
+}
+
+// Sends favorite recipe to local storage -N
+function storeFave (foodRec, instructions) {
+    let pastRec = localStorage.getItem('recipeArray');
+    console.log(pastRec);
+    let recipeArray = JSON.parse(pastRec) || [];
+    console.log(recipeArray);
+    recipeArray.push(foodRec, instructions);
+    console.log(recipeArray);
+    localStorage.setItem('recipeArray', JSON.stringify(recipeArray));
 }
