@@ -171,7 +171,10 @@ function foodCard(foodRec, instructions) {
     foodProt.classList.add("card-content","protein");
     let foodInst = document.createElement("div");
     foodInst.classList.add("card-content","ex-instructions");
+    let favDiet = document.createElement("i");
+    favDiet.classList.add("small", "material-icons");
 
+    favDiet.textContent = "star";
     foodName.textContent = foodRec.title;
     foodCal.textContent = `Calories: ${foodRec.calories}`; 
     foodFat.textContent = `Fat: ${foodRec.fat}`; 
@@ -180,6 +183,7 @@ function foodCard(foodRec, instructions) {
     foodPhoto.src = foodRec.image;
 
     dietCard.appendChild(foodPhoto);
+    foodName.appendChild(favDiet);
     dietCard.appendChild(foodName);
     dietCard.appendChild(macros)
     macros.appendChild(foodCal);
@@ -188,6 +192,10 @@ function foodCard(foodRec, instructions) {
     dietCard.appendChild(foodInst);
 
     foodInst.scrollIntoView({behavior: "smooth"});
+
+    favDiet.addEventListener('click', () => {
+        favDiet.classList.add("fave");
+    })
 }
 
 // Removes all the child elements in the card, 

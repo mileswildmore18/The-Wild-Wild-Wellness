@@ -107,7 +107,7 @@ function exerCard(exercise) {
     instructions.scrollIntoView({behavior: "smooth"});
 
     favEx.addEventListener('click', () => {
-        favEx.classList.add("favEx");
+        favEx.classList.add("fave");
     })
 
 }
