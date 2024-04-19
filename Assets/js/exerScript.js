@@ -89,18 +89,26 @@ function exerCard(exercise) {
     target.classList.add("card-content","target-part");
     let instructions = document.createElement("div");
     instructions.classList.add("card-content","ex-instructions");
+    let favEx = document.createElement("i");
+    favEx.classList.add("small", "material-icons");
 
+    favEx.textContent = "star";
     name.textContent = exercise.name;
     target.textContent = exercise.target;
     instructions.textContent = exercise.instructions;
     gif.src = exercise.gifUrl;
 
     exCard.appendChild(gif);
+    name.appendChild(favEx);
     exCard.appendChild(name);
     exCard.appendChild(target);
     exCard.appendChild(instructions);
 
     instructions.scrollIntoView({behavior: "smooth"});
+
+    favEx.addEventListener('click', () => {
+        favEx.classList.add("favEx");
+    })
 
 }
 
