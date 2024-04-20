@@ -1,12 +1,10 @@
+// Pulls the favorited exercises and recipes out of local storage -N
 let recipeArray = JSON.parse(localStorage.getItem('recipeArray')) || [];
 let exerciseArray = JSON.parse(localStorage.getItem('exerciseArray')) || [];
 
-// console.log(recipeArray);
-// console.log(exerciseArray);
-
+// Takes the favorited exercises out of local storage and puts them on cards on load -N
 for (const exercise of exerciseArray) {
     let exCard = document.querySelector("#ex-card");
-    // empty(exCard);
     let gif = document.createElement("img");
     gif.classList.add("card-image", "ex-img");
     let name = document.createElement("div");
@@ -27,9 +25,9 @@ for (const exercise of exerciseArray) {
     exCard.appendChild(instructions);
 }
 
+// Takes the favorited recipes out of local storage and puts them on cards on load -N
 for (const recipe of recipeArray) {
     let dietCard = document.querySelector("#food-card");
-    // empty(dietCard);
     let foodPhoto = document.createElement("img");
     foodPhoto.classList.add("card-image", "ex-img")
     let foodName = document.createElement("div");

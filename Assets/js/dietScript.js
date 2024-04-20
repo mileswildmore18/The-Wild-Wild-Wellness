@@ -206,10 +206,10 @@ function empty(element) {
 
 // Sends favorite recipe to local storage -N
 function storeFaveRec (foodRec, instructions) {
-    // console.log(foodRec);
-    // console.log(instructions);
+//    FoodRec is an object, and instructions is a string, 
+//  so pushes instructions into FoodRec as a property,
+// so it can be retrieved on the favorites page as one object -N
     foodRec.instructions = instructions;
-    // console.log(foodRec);
     let recipeArray = JSON.parse(localStorage.getItem('recipeArray')) || [];
     recipeArray.push(foodRec);
     localStorage.setItem('recipeArray', JSON.stringify(recipeArray));
