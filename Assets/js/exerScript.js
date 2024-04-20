@@ -103,8 +103,8 @@ function exerCard(exercise) {
     // Makes the favorite button turn yellow when clicked, 
     // and calls the function to store that exercise -N
     favEx.addEventListener('click', () => {
-        favEx.classList.add("fave");
-        storeFave(exercise);
+        favEx.classList.add("faveEx");
+        storeFaveEx(exercise);
     })
 
 }
@@ -118,9 +118,8 @@ function empty(element) {
 }
 
 // Sends favorite exercise to local storage -N
-function storeFave (exercise) {
-    let pastEx = localStorage.getItem('exerciseArray');
-    let exerciseArray = JSON.parse(pastEx) || [];
+function storeFaveEx (exercise) {
+    let exerciseArray = JSON.parse(localStorage.getItem('exerciseArray')) || [];
     exerciseArray.push(exercise);
     localStorage.setItem('exerciseArray', JSON.stringify(exerciseArray));
 }

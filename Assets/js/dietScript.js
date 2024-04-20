@@ -191,8 +191,8 @@ function foodCard(foodRec, instructions) {
     // Makes the favorite button turn yellow when clicked, 
     // and calls the function to store that exercise -N
     favDiet.addEventListener('click', () => {
-        favDiet.classList.add("fave");
-        storeFave(foodRec, instructions);
+        favDiet.classList.add("faveRec");
+        storeFaveRec(foodRec, instructions);
     })
 }
 
@@ -205,12 +205,12 @@ function empty(element) {
 }
 
 // Sends favorite recipe to local storage -N
-function storeFave (foodRec, instructions) {
-    let pastRec = localStorage.getItem('recipeArray');
-    console.log(pastRec);
-    let recipeArray = JSON.parse(pastRec) || [];
-    console.log(recipeArray);
-    recipeArray.push(foodRec, instructions);
-    console.log(recipeArray);
+function storeFaveRec (foodRec, instructions) {
+    // console.log(foodRec);
+    // console.log(instructions);
+    foodRec.instructions = instructions;
+    // console.log(foodRec);
+    let recipeArray = JSON.parse(localStorage.getItem('recipeArray')) || [];
+    recipeArray.push(foodRec);
     localStorage.setItem('recipeArray', JSON.stringify(recipeArray));
 }
