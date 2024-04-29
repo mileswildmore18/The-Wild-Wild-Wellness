@@ -34,11 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dd2 = document.querySelector("#dropdown2");
     dd2.addEventListener('click', (event) => {
         let selectedDiet = event.target.textContent;
-        // sends selectedDiet to local storage -N
-        let pastDiet = localStorage.getItem('dietArray');
-        let dietArray = JSON.parse(pastDiet) || [];
-        dietArray.push(selectedDiet);
-        localStorage.setItem('dietArray', JSON.stringify(dietArray));
         fetchFoods(selectedDiet);
     });
 });
@@ -68,14 +63,13 @@ function loseBF(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     }) 
 }
 
 // Makes fetch request for option "Lose Weight" -N
 function loseWt(selectedDiet) {
-    console.log(selectedDiet);
     fetch(loseWtUrl, {
         method: 'GET',
         headers: {
@@ -86,14 +80,13 @@ function loseWt(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Makes fetch request for option "Gain Muscle" -N
 function gainMus(selectedDiet) {
-    console.log(selectedDiet);
     fetch(gainMusUrl, {
         method: 'GET',
         headers: {
@@ -104,14 +97,13 @@ function gainMus(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Makes fetch request for option "Maintain Muscle" -N
 function mainMus(selectedDiet) {
-    console.log(selectedDiet);
     fetch(mainMusUrl, {
         method: 'GET',
         headers: {
@@ -122,15 +114,15 @@ function mainMus(selectedDiet) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        getRecipe(data);        
+    .then(function (diet) {
+        getRecipe(diet);        
     })
 }
 
 // Takes name of recipe and makes new fetch for actual recipe
 // Our original fetch returned the name, img, and nutrient values, but not the actual recipe -N
-function getRecipe(data) {
-    let foodRec = data[Math.floor(Math.random()*data.length)];
+function getRecipe(diet) {
+    let foodRec = diet[Math.floor(Math.random()*diet.length)];
     let recipeID = foodRec.id;
     const getRecipeUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeID}/information`;
 
@@ -146,7 +138,13 @@ function getRecipe(data) {
     })
     .then(function (data) {
         let instructions = data.instructions; 
-        foodCard(foodRec, instructions)     
+        // If foodRec returns a recipe that doesn't have instructions in the API, 
+        // runs the fetch again until it finds a recipe with instructions -N
+        if (instructions === null) {
+            getRecipe(diet);
+        } else {
+            foodCard(foodRec, instructions)     
+        }
     })
 }
 
@@ -168,7 +166,10 @@ function foodCard(foodRec, instructions) {
     foodProt.classList.add("card-content","protein");
     let foodInst = document.createElement("div");
     foodInst.classList.add("card-content","ex-instructions");
+    let favDiet = document.createElement("i");
+    favDiet.classList.add("small", "material-icons");
 
+    favDiet.textContent = "star";
     foodName.textContent = foodRec.title;
     foodCal.textContent = `Calories: ${foodRec.calories}`; 
     foodFat.textContent = `Fat: ${foodRec.fat}`; 
@@ -177,6 +178,7 @@ function foodCard(foodRec, instructions) {
     foodPhoto.src = foodRec.image;
 
     dietCard.appendChild(foodPhoto);
+    foodName.appendChild(favDiet);
     dietCard.appendChild(foodName);
     dietCard.appendChild(macros)
     macros.appendChild(foodCal);
@@ -185,6 +187,13 @@ function foodCard(foodRec, instructions) {
     dietCard.appendChild(foodInst);
 
     foodInst.scrollIntoView({behavior: "smooth"});
+
+    // Makes the favorite button turn yellow when clicked, 
+    // and calls the function to store that exercise -N
+    favDiet.addEventListener('click', () => {
+        favDiet.classList.add("faveRec");
+        storeFaveRec(foodRec, instructions);
+    })
 }
 
 // Removes all the child elements in the card, 
@@ -193,4 +202,15 @@ function empty(element) {
     while(element.firstElementChild) {
         element.firstElementChild.remove();
     }
+}
+
+// Sends favorite recipe to local storage -N
+function storeFaveRec (foodRec, instructions) {
+//    FoodRec is an object, and instructions is a string, 
+//  so pushes instructions into FoodRec as a property,
+// so it can be retrieved on the favorites page as one object -N
+    foodRec.instructions = instructions;
+    let recipeArray = JSON.parse(localStorage.getItem('recipeArray')) || [];
+    recipeArray.push(foodRec);
+    localStorage.setItem('recipeArray', JSON.stringify(recipeArray));
 }
