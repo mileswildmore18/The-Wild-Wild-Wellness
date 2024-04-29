@@ -1,6 +1,6 @@
 # The-Wild-Wild-Wellness
 
-![alt text](<Wild Wild Wellness screenshot.png>)
+![alt text](<./Assets/Wild Wild Wellness screenshot.png>)
 The group project to present to the class in bootcamp on Friday April 19, 2024.
 Welcome to the Wild Wild Wellness!
 If you are looking to get fit and know what diet you are looking for, this is the place for you!
